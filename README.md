@@ -1,3 +1,13 @@
+
+<meta
+  name="description"
+  content="Learn how to build lightweight data visualizations with ProvChart, a CSS-based charting system."
+/>
+
+<meta
+  name="keywords"
+  content="ProvChart, CSS charts, pure CSS charts, FSCSS, data visualization"
+/>
 # ProvChart
 
 A pure-CSS charting system for the modern web. Build dashboards, stat cards, and data visualizations with zero JavaScript runtime — just HTML + CSS.
