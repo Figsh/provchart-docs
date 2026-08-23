@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Area Chart - HTML/CSS</title>
+  <script src="https://cdn.jsdelivr.net/npm/fscss@1.1.24/exec.min.js" async></script>
+
+  <style>
+    @import((*) from st-core)
+
+    @st-root()
+    @st-container(body)
+    @st-chart-fill(.chart-fill)
+    @st-chart-line(.chart-line)
+    @st-chart-dot(.chart-dot, 70, 60)
+
+    .chart {
+      width: 300px;
+      height: 200px;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      background: var(--st-surface);
+      @st-chart-points(20, 25, 21, 37, 30, 60, 27, 50)
+    }
+
+    .chart-fill {
+      opacity: 0.85;
+    }
+
+    .chart-line {
+      @st-chart-line-width(2px);
+    }
+
+    .chart-dot {
+      position: relative;
+      overflow: visible;
+    }
+
+    .chart-dot:after {
+      content: attr(data-point);
+      background: var(--st-accent);
+      padding: 6px 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      border-radius: var(--st-radius-sm);
+      position: absolute;
+      top: -39px;
+      left: -30px;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="chart">
+    <div class="chart-fill"></div>
+    <div class="chart-line"></div>
+    <div class="chart-dot" data-point="$405.67"></div>
+  </div>
+</body>
+</html>
