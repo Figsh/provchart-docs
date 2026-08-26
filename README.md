@@ -43,7 +43,7 @@ Browser renders clip-path: polygon()
 Chart displayed via pure CSS
 ```
 
-## Quick Start
+## Quick Start st-core.fscss 
 
 ### Option A: CDN Runtime (prototyping)
 
