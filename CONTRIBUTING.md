@@ -13,21 +13,20 @@ Thank you for your interest in improving ProvChart documentation.
 
 - Use clear, concise language
 - Include working code examples
-- Verify all APIs against st-core.fscss source
 - Do not invent features that don't exist
 
 ## Code Examples
 
 - All examples must be complete enough to understand
 - Use realistic variable names
-- Follow the actual ProvChart/st-core syntax
+- Follow the actual ProvChart
 - Include comments where helpful
 
 ## Source Verification
 
 Before documenting any API:
 
-1. Verify it exists in the st-core.fscss source
+1. Verify it exists in ProvChart 
 2. Confirm its exact name and parameters
 3. Confirm expected values and behavior
 4. Document any limitations
