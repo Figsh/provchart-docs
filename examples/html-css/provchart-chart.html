@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProvChart + Runtime Example</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0c0a16;
+      font-family: system-ui, sans-serif;
+    }
+    #chart {
+      width: min(640px, 92vw);
+    }
+    .err {
+      color: #ff5e7d;
+      font-size: 14px;
+      padding: 16px;
+    }
+  </style>
+
+  <!-- 1. Optional runtime config (before runtime script) -->
+  <script>
+    window.ProvChartRuntimeConfig = {
+      animation: true,
+      revealOnScroll: true,
+      replay: false,
+      hoverScale: 1.02,
+      tooltips: true,
+      perPointTooltips: true,
+      countUp: true,
+      countUpMs: 800,
+      observe: true,
+      selector: '[data-provchart]',
+      excludeSvg: true,
+      durationMs: 700,
+    };
+  </script>
+
+  <!-- 2. Runtime (CDN) -->
+  <script src="https://unpkg.com/provchart-runtime@1.0.0/dist/provchart-runtime.min.js"></script>
+</head>
+<body>
+  <div id="chart"></div>
+
+  <script type="module" defer>
+    const API = 'https://provchart-api.devtem.org/api/v1/generate';
+    const API_KEY = 'YOUR_API_KEY'; // chart.devtem.org - Dashboard - Developer API
+
+    const payload = {
+  type: "area",
+  series: [
+    { name: "Traffic", color: "#4fd8c4", points: [30, 45, 40, 60, 55, 70, 65] },
+    { name: "Signups", color: "#f0a860", points: [8, 12, 11, 18, 16, 22, 20] },
+  ],
+  axisX: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+};
+
+    const mount = document.getElementById('chart');
+
+    try {
+      const res = await fetch(API, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-Key': API_KEY,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (!data.success) {
+        throw new Error(data.error || data.code || `HTTP ${res.status}`);
+      }
+
+      // Inject CSS once, then HTML
+      let style = document.getElementById('provchart-style');
+      if (!style) {
+        style = document.createElement('style');
+        style.id = 'provchart-style';
+        document.head.appendChild(style);
+      }
+      style.textContent = data.css || '';
+      mount.innerHTML = data.html || '';
+    } catch (err) {
+      mount.innerHTML = `<p class="err">${err.message}</p>`;
+      console.error(err);
+    }
+    
+    
+  </script>
+</body>
+</html>

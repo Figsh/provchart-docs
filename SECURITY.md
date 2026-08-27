@@ -20,4 +20,3 @@ If you discover a security vulnerability in ProvChart documentation or examples,
 
 - ProvChart charts are pure CSS with no JavaScript execution
 - No external scripts are required in compiled mode
-- CDN mode loads the FSCSS runtime from a trusted source
