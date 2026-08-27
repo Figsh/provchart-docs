@@ -159,7 +159,7 @@ Runnable integration examples for the Developer API:
 | [`examples/node-example.js`](examples/node-example.js) | Node.js |
 | [`examples/python-example.py`](examples/python-example.py) | Python |
 | [`examples/curl-example.sh`](examples/curl-example.sh) | curl |
-
+| [`examples/html-css/provchart-chart.html`](examples/html-css/provchart-chart.html) | html |
 Each covers `/generate` for HTML/CSS output, with `/generate-svg` shown as a variant for README and docs embeds where a `<style>` block isn't available.
 
 ## Optional runtime
@@ -295,7 +295,7 @@ fscss style.fscss style.css
 
 ## JavaScript Integration
 
-ProvChart is 100% CSS. JavaScript is optional — it only writes CSS variables:
+st-core.fscss is 100% CSS. JavaScript is optional — it only writes CSS variables:
 
 ```javascript
 // Update chart data with vanilla JS
